@@ -1,0 +1,36 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: <client-id>
+            client-secret: <secret>
+            client-name: "Client for GitHub"
+          gluu: 
+            client-id: <client-id>
+            client-secret: <secret>
+            client-name: "Login with Gluu"
+            scope: profile
+          google:
+            client-id: <client-id>
+            client-secret: <secret>
+            client-name: "Login with Google"
+            scope: profile
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+          gluu:
+            issuer-uri: https://example.com
+          github:
+            issuer-uri: https://token.actions.githubusercontent.com
+
+          
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          client:
+            RestTemplate: DEBUG
