@@ -6,7 +6,7 @@ spring:
           github:
             client-id: <client-id>
             client-secret: <secret>
-            client-name: "Client for GitHub"
+            client-name: "Login with GitHub"
           gluu: 
             client-id: <client-id>
             client-secret: <secret>
@@ -17,18 +17,34 @@ spring:
             client-secret: <secret>
             client-name: "Login with Google"
             scope: profile
+            #redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
+          azure:
+            client-id: <client-id>
+            client-secret: <secret>
+            client-name: "Login with Azure"
+            scope: https://graph.microsoft.com/profile
         provider:
+          # Make sure all the issuer-uri + '/.well-known/openid-configuration' reachable
+          # DO NOT ADD `/` at the end of the issuer-uri
           google:
             issuer-uri: https://accounts.google.com
           gluu:
-            issuer-uri: https://example.com
+            issuer-uri: https://example.gluu.com
           github:
-            issuer-uri: https://token.actions.githubusercontent.com
-
+            # Why doesn't github make complete `/.well-known/openid-configuration`?
+            #issuer-uri: https://token.actions.githubusercontent.com
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            authorization-uri: https://github.com/login/oauth/authorize
+          azure:
+            # https://login.microsoftonline.com/<your tenant id>/v2.0
+            issuer-uri: https://login.microsoftonline.com/<your tenant id>/v2.0
+            
           
 logging:
   level:
     org:
+    
       springframework:
         security: DEBUG
         web:
