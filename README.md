@@ -115,10 +115,6 @@ When you(the user) login first time you will see the authorization screen like b
 
 - Add client credentials to generate secret.
 
-If you do not configure properly, you will get error something like below.
-
-![Create New Application](docs/azure-ad-5.png)
-
 - (Re)Start the SpringBoot application
 
 
