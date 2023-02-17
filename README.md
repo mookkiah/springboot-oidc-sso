@@ -43,7 +43,39 @@ mvn clean package spring-boot:run
 ## OIDC Provider configuration
 
 ### Google
+Go to `console.cloud.google.com` --> Click `APIs & services` --> Click `Credentials`
 
+![Google Main Page](docs/google-mainpage.png)
+
+- Click `Create Project`
+- Name: springboot-oidc-sso
+- Click `Create`
+
+![Google Create Project](docs/google-create-newproject.png)
+
+- Click `OAuth consent screen`
+- Click `Create`
+
+![Google - OAuth Consent Screen](docs/google-create-oauth_consent_screen.png)
+
+- Click `+ Create Credentials`
+- Click `OAuth client ID`
+- Select Application Type `Web application`
+
+![Google Create Credentials](docs/google-application-details.png)
+
+- Enter `Authorized redirect URIs` --> Click `Add URI`
+- Redirect URI (optional): Web - http://localhost:8080/login/oauth2/code/google
+- Click `Create`
+
+![Google Add URL](docs/google-add_url.png)
+
+- Click `OAuth web client` 
+
+![Google End Point Details](docs/google-endpoint-details.png)
+
+- copy `Client ID` and update in `application.yml` at `spring.security.oauth2.client.registration.google.client-id`
+- Copy secret `Client secret` and update in `application.yml` at `spring.security.oauth2.client.registration.google.client-secret`
 
 ### Gluu
 
